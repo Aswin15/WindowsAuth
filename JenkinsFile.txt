@@ -5,7 +5,7 @@
 			sh 'docker build -f Dockerfile -t ${DOCKER_REGISTRY-}kl-admin:${TAG} --build-arg version=${VERSION}.'	
 		}
 		stage('Deploy') {
-			sh 'docker-compose -f docker-compose.yml --compatibility up -d --no-build --force-recreate --remove-orphans'
+			sh 'docker-compose -f dockercompose.yml --compatibility up -d --no-build --force-recreate --remove-orphans'
 		}
 	}
 }
