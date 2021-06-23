@@ -1,0 +1,9 @@
+﻿version: '3.8'
+services:
+	app:
+		container_name : windowsauthapp
+		image : ${DOCKER_REGISTRY-}windowsapp:${TAG-latest}
+		build :
+			context :
+			dockerfile : Dockerfile
+			restart : always
