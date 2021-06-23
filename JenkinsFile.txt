@@ -2,10 +2,12 @@
 	agent none
 	stages {
 		stage('Build') {
-			sh 'docker build -f Dockerfile -t ${DOCKER_REGISTRY-}kl-admin:${TAG} --build-arg version=${VERSION}.'	
+			echo 'helo'
+			-- sh 'docker build -f Dockerfile -t ${DOCKER_REGISTRY-}kl-admin:${TAG} --build-arg version=${VERSION}.'	
 		}
 		stage('Deploy') {
-			sh 'docker-compose -f dockercompose.yml --compatibility up -d --no-build --force-recreate --remove-orphans'
+			echo 'deploy'
+			-- sh 'docker-compose -f dockercompose.yml --compatibility up -d --no-build --force-recreate --remove-orphans'
 		}
 	}
 }
