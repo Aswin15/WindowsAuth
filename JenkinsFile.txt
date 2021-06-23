@@ -1,13 +1,17 @@
 ﻿pipeline {
-	agent none
+	agent any
 	stages {
 		stage('Build') {
-			echo 'helo'
-			-- sh 'docker build -f Dockerfile -t ${DOCKER_REGISTRY-}kl-admin:${TAG} --build-arg version=${VERSION}.'	
+		    steps {
+			// echo 'helo'
+			sh 'docker build -f Dockerfile -t ${DOCKER_REGISTRY-}kl-admin:${TAG} --build-arg version=${VERSION}.'	
+		    }
 		}
 		stage('Deploy') {
-			echo 'deploy'
-			-- sh 'docker-compose -f dockercompose.yml --compatibility up -d --no-build --force-recreate --remove-orphans'
+		    steps {
+			// echo 'deploy'
+			sh 'docker-compose -f dockercompose.yml --compatibility up -d --no-build --force-recreate --remove-orphans'
+		    }
 		}
 	}
 }
